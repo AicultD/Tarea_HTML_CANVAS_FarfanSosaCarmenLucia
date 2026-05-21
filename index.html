@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Técnico: Blog Interactivo Animado "El Baratillo"</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+        .header-manual {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid #ef4444;
+        }
+        .header-manual h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            letter-spacing: -0.5px;
+        }
+        .header-manual p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin: 10px 0 0 0;
+        }
+        .container {
+            max-width: 950px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.6rem;
+        }
+        h3 {
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 700;
+        }
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        pre {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+        }
+        code {
+            font-family: 'Consolas', monospace;
+            background-color: #e2e8f0;
+            color: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+        }
+        .badge {
+            display: inline-block;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .badge-html { background-color: #e34c26; }
+        .badge-css { background-color: #264de4; }
+        .badge-js { background-color: #d97706; }
+        
+        .nota-pedagogica {
+            background-color: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        .ejercicio-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+        .ejercicio-box h4 {
+            margin-top: 0;
+            color: #14532d;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-manual">
+        <h1>Manual Técnico: Blog Interactivo con Animación Canvas</h1>
+        <p>Estructura Integrada y Ejercicios Prácticos de Nivel Básico | Feria "El Baratillo"</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Arquitectura del Proyecto -->
+        <div class="card">
+            <h2>1. Arquitectura y Archivos del Sistema</h2>
+            <p>Este manual integra HTML5, CSS3, JavaScript y la API de Canvas para construir un entorno interactivo dinámico. El alumno deberá crear un directorio organizado con la siguiente estructura de archivos:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Archivo requerido</th>
+                        <th>Tecnología</th>
+                        <th>Propósito del Módulo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>index.html</code></td>
+                        <td><span class="badge badge-html">HTML5</span></td>
+                        <td>Estructura y esqueleto del blog, definición de categorías de la feria y lienzo Canvas.</td>
+                    </tr>
+                    <tr>
+                        <td><code>estilos.css</code></td>
+                        <td><span class="badge badge-css">CSS3</span></td>
+                        <td>Estilos de diseño, diseño adaptativo básico (Grid/Flexbox) y efectos visuales reactivos (Hover).</td>
+                    </tr>
+                    <tr>
+                        <td><code>script.js</code></td>
+                        <td><span class="badge badge-js">JS / Canvas</span></td>
+                        <td>Lógica de interacción con productos y bucle de animación para el movimiento del logotipo.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Código de index.html -->
+        <div class="card">
+            <h2>2. Estructura de Interfaz <span class="badge badge-html">index.html</span></h2>
+            <p>Este archivo define el maquetado del blog. Contiene el lienzo gráfico <code>&lt;canvas&gt;</code> en el encabezado y botones preparados para enviar los datos de los productos mediante eventos <code>onclick</code>.</p>
+            
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Feria El Baratillo - Interactiva&lt;/title&gt;
+    &lt;link rel="stylesheet" href="estilos.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Encabezado con el espacio para el Canvas Animado --&gt;
+    &lt;header&gt;
+        &lt;canvas id="logoCanvas" width="400" height="80"&gt;&lt;/canvas&gt;
+        &lt;p class="subtitulo"&gt;¡Los mejores productos a precios de feria!&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;main class="contenedor"&gt;
+        &lt;!-- Listado de Productos por Categoría --&gt;
+        &lt;section class="productos"&gt;
+            
+            &lt;!-- Categoría: Electrónicos --&gt;
+            &lt;div class="categoria"&gt;
+                &lt;h2&gt;⚡ Electrónicos&lt;/h2&gt;
+                &lt;div class="lista-productos"&gt;
+                    &lt;button class="btn-producto" onclick="mostrarDetalle('USB', '$5', 'Memoria de 64GB de alta velocidad.')"&gt;USB&lt;/button&gt;
+                    &lt;button class="btn-producto" onclick="mostrarDetalle('Chip Celular', '$3', 'Conectividad 4G/5G con saldo inicial.')"&gt;Chip Celular&lt;/button&gt;
+                    &lt;button class="btn-producto" onclick="mostrarDetalle('Cargador', '$10', 'Carga rápida de 20W tipo C.')"&gt;Cargador Celular&lt;/button&gt;
+                </div>
+            &lt;/div&gt;
+
+            &lt;!-- Categoría: Doméstico --&gt;
+            &lt;div class="categoria"&gt;
+                &lt;h2&gt;🏠 Doméstico&lt;/h2&gt;
+                &lt;div class="lista-productos"&gt;
+                    &lt;button class="btn-producto" onclick="mostrarDetalle('Cocina Portátil', '$25', 'Ideal para camping, funciona con gas butano.')"&gt;Cocina Portátil&lt;/button&gt;
+                    &lt;button class="btn-producto" onclick="mostrarDetalle('Cuchillos', '$8', 'Set de 3 cuchillos de acero inoxidable.')"&gt;Cuchillos&lt;/button&gt;
+                    &lt;button class="btn-producto" onclick="mostrarDetalle('Encendedor', '$2', 'Recargable y resistente al viento.')"&gt;Encendedor&lt;/button&gt;
+                </div>
+            &lt;/div&gt;
+
+        &lt;/section&gt;
+
+        &lt;!-- Panel de Visualización Lateral Dinámico --&gt;
+        &lt;aside class="panel-info"&gt;
+            &lt;h3&gt;Información del Producto&lt;/h3&gt;
+            &lt;div id="vista-previa"&gt;
+                &lt;p&gt;Haz clic en cualquier producto para ver sus detalles aquí.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <!-- Código de estilos.css -->
+        <div class="card">
+            <h2>3. Maquetación y Efectos Visuales <span class="badge badge-css">estilos.css</span></h2>
+            <p>El diseño web multimedia interactivo requiere respuestas ante las acciones del cursor. Usamos la propiedad <code>transition</code> junto con <code>:hover</code> para crear una animación básica al posicionarse sobre los botones.</p>
+            
+            <pre><code>body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #1e293b;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.subtitulo {
+    color: #cbd5e1;
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
+/* Distribución de la pantalla en dos columnas */
+.contenedor {
+    max-width: 900px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 0 15px;
+}
+
+.categoria {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.categoria h2 {
+    margin-top: 0;
+    color: #0f172a;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.lista-productos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* EFECTO MULTIMEDIA BÁSICO (Transición y Escalado) */
+.btn-producto {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Suaviza el cambio de estado */
+}
+
+/* Estado activo al pasar el mouse */
+.btn-producto:hover {
+    background-color: #2563eb;
+    transform: scale(1.05); /* Efecto de crecimiento de tamaño */
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.panel-info {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 5px solid #ef4444; /* Línea de acento roja */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+#vista-previa h4 {
+    color: #ef4444;
+    font-size: 1.3rem;
+    margin: 10px 0;
+}</code></pre>
+        </div>
+
+        <!-- Código de script.js con animación -->
+        <div class="card">
+            <h2>4. Lógica de Interacción y Animación Canvas <span class="badge badge-js">script.js</span></h2>
+            <p>Este módulo realiza dos tareas fundamentales: controla la actualización dinámica de textos en el DOM (cuando se pulsa un producto) e implementa un <strong>Bucle de Animación (Loop)</strong> usando un control de rebote básico para mover el texto en el Canvas.</p>
+            
+            <pre><code>// --- VARIABLES DE ANIMACIÓN (Nivel Básico) ---
+let posX = 200;       // Posición horizontal inicial (centro del lienzo)
+let velocidad = 1;    // Dirección y cantidad de píxeles a mover por cuadro (1 = derecha, -1 = izquierda)
+
+// --- BUCLE DE ANIMACIÓN DE CANVAS ---
+function animarLogo() {
+    const canvas = document.getElementById('logoCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 1. Limpiar completamente el lienzo en cada fotograma
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 2. Dibujar el fondo del letrero (Fijo)
+    ctx.fillStyle = '#ef4444'; 
+    ctx.fillRect(10, 10, 380, 60);
+
+    // 3. Dibujar el marco brillante interno (Fijo)
+    ctx.strokeStyle = '#f59e0b'; 
+    ctx.lineWidth = 4;
+    ctx.strokeRect(15, 15, 370, 40);
+
+    // 4. Actualizar la variable de posición horizontal
+    posX = posX + velocidad;
+
+    // 5. CONTROL DE REBOTE (Pirueta Izquierda -> Derecha -> Izquierda)
+    // Si la posición supera un límite derecho o izquierdo, multiplicamos por -1 para invertir el rumbo
+    if (posX > 270 || posX < 130) {
+        velocidad = velocidad * -1; 
+    }
+
+    // 6. Dibujar el texto en la nueva coordenada 'posX' calculada
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 22px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('FERIA "EL BARATILLO"', posX, 45);
+
+    // 7. Solicitar al navegador que renderice el siguiente cuadro de animación de forma fluida
+    requestAnimationFrame(animarLogo);
+}
+
+// Iniciar el bucle gráfico al cargar la ventana por completo
+window.onload = animarLogo;
+
+
+// --- INTERACTIVIDAD DINÁMICA DE LA INTERFAZ ---
+function mostrarDetalle(nombre, precio, descripcion) {
+    const contenedorInfo = document.getElementById('vista-previa');
+    
+    // Inyección de plantillas HTML para actualizar el panel de información
+    contenedorInfo.innerHTML = `
+        <h4>${nombre}</h4>
+        <p><strong>Precio Especial:</strong> ${precio}</p>
+        <p>${descripcion}</p>
+        <button class="btn-producto" style="background-color:#10b981; width:100%; margin-top:10px;">
+            🛒 Apartar Producto
+        </button>
+    `;
+}</code></pre>
+
+            <div class="nota-pedagogica">
+                <strong>💡 Concepto Clave para el Alumno:</strong> La función <code>ctx.clearRect()</code> es el borrador físico del lienzo. Si se comenta esa línea, el texto se dibujará sobre sí mismo infinitamente, generando un rastro sólido.
+            </div>
+        </div>
+
+        <!-- Sección de Ejercicios Sencillos -->
+        <div class="card">
+            <h2>5. Cuaderno de Ejercicios Prácticos (Nivel Básico)</h2>
+            <p>Proponga a los alumnos las siguientes modificaciones sencillas sobre el código base para evaluar su comprensión de la lógica multimedia e interactiva:</p>
+            
+            <!-- Ejercicio 1 -->
+            <div class="ejercicio-box">
+                <h4>🛠️ Ejercicio 1: Modificación de la Velocidad de la Pirueta</h4>
+                <p><strong>Objetivo:</strong> Identificar qué variables controlan el tiempo y ritmo en un entorno multimedia.</p>
+                <p><strong>Instrucción:</strong> Ve a tu archivo <code>script.js</code>, localiza la variable <code>velocidad</code> y cámbiala del valor <code>1</code> actual al valor <code>3</code>. Guarda y prueba en el navegador.</p>
+                <ul>
+                    <li>¿El texto va más rápido o más lento?</li>
+                    <li>¿Qué ocurre si cambias el valor a un número decimal muy pequeño como <code>0.5</code>?</li>
+                </ul>
+            </div>
+
+            <!-- Ejercicio 2 -->
+            <div class="ejercicio-box">
+                <h4>🎨 Ejercicio 2: Personalización del Color Multimedia</h4>
+                <p><strong>Objetivo:</strong> Relacionar diseño en Canvas con propiedades estéticas de CSS.</p>
+                <p><strong>Instrucción:</strong> Cambia los colores del logo de la feria para que se adapte a una temática nocturna:</p>
+                <ol>
+                    <li>En el archivo <code>script.js</code>, cambia el color de fondo del rectángulo (<code>ctx.fillStyle = '#ef4444';</code>) por un tono azul oscuro o morado (ejemplo: <code>#2e1065</code>).</li>
+                    <li>En el mismo archivo, cambia el color del borde decorativo a verde brillante (<code>#22c55e</code>).</li>
+                </ol>
+            </div>
+
+            <!-- Ejercicio 3 -->
+            <div class="ejercicio-box">
+                <h4>📦 Ejercicio 3: Expansión del Catálogo de Feria</h4>
+                <p><strong>Objetivo:</strong> Desarrollar habilidades de copia, edición y comprensión de paso de parámetros funcionales en HTML.</p>
+                <p><strong>Instrucción:</strong> Añade un producto nuevo a cualquiera de las dos categorías en tu archivo <code>index.html</code>.</p>
+                <ul>
+                    <li>Crea un botón extra debajo del producto "Encendedor".</li>
+                    <li>Usa la misma estructura y asegúrate de cambiar los parámetros de la función <code>mostrarDetalle()</code> para que muestre un nombre, precio y descripción diferentes (por ejemplo: una "Sartén antiadherente").</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
